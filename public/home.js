@@ -1,5 +1,5 @@
 //arrays to store tags
-let throughlines = [];
+let years = [];
 let skills = [];
 let courseLevel=[];
 let courses = [];
@@ -57,8 +57,8 @@ function insertTagIntoTagBox(tag) {
   tagBox.appendChild(tagButton);
   
   // add tag to appropriate tag array
-  if (tag.classList.contains('throughline')){
-    throughlines.push(tagText)
+  if (tag.classList.contains('year')){
+    years.push(tagText)
   }
   
   if (tag.classList.contains('skill')){
@@ -76,8 +76,8 @@ function insertTagIntoTagBox(tag) {
   // remove the tag when the button is clicked
   tagButton.addEventListener('click', function() {
   this.remove();
-   if (tag.classList.contains('throughline')){
-     throughlines.splice(throughlines.indexOf(tagText), 1);
+   if (tag.classList.contains('year')){
+     years.splice(years.indexOf(tagText), 1);
    }
    
    // remove tag from appropriate tag array
@@ -100,10 +100,10 @@ function insertTagIntoTagBox(tag) {
 
 document.addEventListener("DOMContentLoaded", function() {
    
-// add event listener to throughlineButton
-var throughlineButton = document.getElementById('throughline_button');
-throughlineButton.addEventListener('click', function() {
-    toggleTagPopUp("throughline_pop_up");
+// add event listener to yearButton
+var yearButton = document.getElementById('year_button');
+yearButton.addEventListener('click', function() {
+    toggleTagPopUp("year_pop_up");
     displayArrays(); // update and display arrays when a tag is clicked
 });
 
@@ -199,8 +199,8 @@ function search() {
 
 // Function to display array contents on the web page
 function displayArrays() {
-  // Display throughlines
-  document.getElementById("throughlines").textContent = JSON.stringify(throughlines);
+  // Display years
+  document.getElementById("years").textContent = JSON.stringify(years);
   
   // Display skills
   document.getElementById("skills").textContent = JSON.stringify(skills);
