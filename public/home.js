@@ -115,7 +115,7 @@ function insertTagIntoTagBox(tag) {
   }
   
   if (tag.classList.contains('student')){
-    student.push(tagIdentifier)
+    students.push(tagIdentifier)
   }
   
   // remove the tag when the button is clicked
@@ -139,11 +139,11 @@ function insertTagIntoTagBox(tag) {
    }
     
    if (tag.classList.contains('teacher')){
-     teachers.splice(courseLevel.indexOf(tagIdentifier), 1);
+     teachers.splice(teachers.indexOf(tagIdentifier), 1);
    }
    
    if (tag.classList.contains('student')){
-     students.splice(courseLevel.indexOf(tagIdentifier), 1);
+     students.splice(students.indexOf(tagIdentifier), 1);
    }
   
   displayArrays();
@@ -273,8 +273,7 @@ function displayArrays() {
 
 function handleButtonClick() {
   // create url based on search parameters
-  //example search for reference: search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&years=[2022,2023]&terms=[1,2,3]&levels=["Advanced"]
-  url_string = "/search?skills=" + JSON.stringify(skills) + "&courses=" + JSON.stringify(courses) + "&levels=" + JSON.stringify(courseLevel) + "&years=" + JSON.stringify(years) + "&students=" + JSON.stringify(students) + "&teachers=" + JSON.stringify(teachers)
+  url_string = "/search?skills=" + JSON.stringify(skills) + "&courses=" + JSON.stringify(courses) + "&levels=" + JSON.stringify(courseLevel)
 
   // redirect to new url
   window.location.href = url_string; 
