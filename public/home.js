@@ -61,7 +61,6 @@ function generateYearTagsAll() {
 function insertTagIntoTagBox(tag) {
   const tagBox = document.querySelector('.tag_box');
   const tagText = tag.textContent.trim(); // tag text content and remove whitespace
-  const tagIdentifier = tag.dataset.identifier; // get identifying data associated with tag | IMPORTANT PLEASE DO NOT OVERWRITE
 
   // check that tag is in the tag_box
   const existingTags = tagBox.querySelectorAll('.tag');
@@ -93,26 +92,34 @@ function insertTagIntoTagBox(tag) {
   
   // add tag to appropriate tag array
   if (tag.classList.contains('year')){
-    years.push(tagText)
+    years.push(parseInt(tagText.substr(0,4)))
   }
   
   if (tag.classList.contains('skill')){
-    skills.push(tagIdentifier)
+    skills.push(tagText)
   }
   
   if (tag.classList.contains('course')){
-    courses.push(tagIdentifier)
+    courses.push(tagText)
   }
   
   if (tag.classList.contains('level')){
     courseLevel.push(tagText)
   }
   
+  if (tag.classList.contains('teacher')){
+    teachers.push(tagText)
+  }
+  
+  if (tag.classList.contains('student')){
+    student.push(tagText)
+  }
+  
   // remove the tag when the button is clicked
   tagButton.addEventListener('click', function() {
   this.remove();
    if (tag.classList.contains('year')){
-     years.splice(years.indexOf(tagText), 1);
+     years.splice(years.indexOf(parseInt(tagText.substr(0,4))));
    }
    
    // remove tag from appropriate tag array
@@ -127,11 +134,19 @@ function insertTagIntoTagBox(tag) {
    if (tag.classList.contains('level')){
      courseLevel.splice(courseLevel.indexOf(tagText), 1);
    }
+    
+   if (tag.classList.contains('teacher')){
+     teachers.splice(courseLevel.indexOf(tagText), 1);
+   }
+   
+   if (tag.classList.contains('student')){
+     students.splice(courseLevel.indexOf(tagText), 1);
+   }
   
   displayArrays();
   });
   
-} 
+}
 
 document.addEventListener("DOMContentLoaded", function() {
    
